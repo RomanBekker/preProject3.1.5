@@ -2,7 +2,7 @@
 //Делаем GET-запрос (на всех юзеров, на авторизированного юзера)
 async function getResponse() {
     //Получаем ВСЕХ юзеров:
-    let response = await fetch('http://localhost:8080/he/all', {
+    let response = await fetch('http://localhost:8080/api/all', {
         method: 'GET',
         headers: {'Content-Type': 'application/json'}
     });
@@ -17,7 +17,7 @@ async function getResponse() {
 
     //___________________________________________________________________________
     //Получаем АВТОРИЗИРОВАННОГО юзера:
-    const respAuth = await fetch("http://localhost:8080/he/userAuth", {
+    const respAuth = await fetch("http://localhost:8080/api/userAuth", {
         method: "GET",
         headers: {"Content-Type": "application/json"}
     });
@@ -45,7 +45,7 @@ getResponse()
 
 //Делаем GET-запрос (на возврат одного юзера по id)
 async function getUser(id) {
-    const response = await fetch("http://localhost:8080/he/" + id, {
+    const response = await fetch("http://localhost:8080/api/" + id, {
         method: "GET",
         headers: {"Accept": "application/json"}
     });
@@ -94,7 +94,7 @@ async function getUser(id) {
 //Делаем POST-запрос на добавление юзера:
 async function createUser(userName, userLastName, userAge, userUserName, userPassword, userRoles) {
 
-    const response = await fetch("http://localhost:8080/he", {
+    const response = await fetch("http://localhost:8080/api", {
         method: "POST",
         headers: {
             "Accept": "application/json",
@@ -163,7 +163,7 @@ async function editUser(userId, userName, userLastName, userAge, userUserName, u
         password: userPassword,
         roles: userRoles
     });
-    const response = await fetch("http://localhost:8080/he/" + userId, {
+    const response = await fetch("http://localhost:8080/api/" + userId, {
         method: "PATCH",
         headers: {
             "Accept": "application/json",
@@ -184,7 +184,7 @@ async function editUser(userId, userName, userLastName, userAge, userUserName, u
 
 //Возвращаем юзера, чтобы удалить его:
 async function deleteUser(id) {
-    const responseDel = await fetch("http://localhost:8080/he/" + id, {
+    const responseDel = await fetch("http://localhost:8080/api/" + id, {
         method: "GET",
         headers: {"Accept": "application/json"}
     });
@@ -211,7 +211,7 @@ async function deleteUser(id) {
 
 //Делаем DELETE-запрос на удаление юзера:
 async function deleteUser2(id) {
-    const response = await fetch("http://localhost:8080/he/" + id, {
+    const response = await fetch("http://localhost:8080/api/" + id, {
         method: "DELETE",
         headers: {"Accept": "application/json"}
     });

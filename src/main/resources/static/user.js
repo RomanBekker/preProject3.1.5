@@ -1,7 +1,7 @@
 //ГЛАВНАЯ:
 //Делаем GET-запрос (на авторизированного юзера), вызываем функцию заполнения таблицы и заполнения титулов в шапке
 async function getUser() {
-    const response = await fetch("http://localhost:8080/he/userAuth", {
+    const response = await fetch("http://localhost:8080/api/userAuth", {
         method: "GET",
         headers: {"Content-Type": "application/json"}
     });

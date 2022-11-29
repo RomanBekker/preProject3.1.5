@@ -25,7 +25,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http    .csrf().disable()//это отключает csrf-защиту (* так же во вью login)
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/api/userAuth").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/api/**", "/admin/**").hasRole("ADMIN")
                 .antMatchers("/user").hasRole("USER")
                 //для всех остальных страниц мы даем доступ и юзеру и админу
                 .anyRequest().hasAnyRole("USER", "ADMIN")
